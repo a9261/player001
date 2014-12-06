@@ -6,52 +6,64 @@
 				"name": "BlackBoard",
 				"contents": [
 					{
-						"id": 26,
-						"name": "blackboard01.jpg",
-						"fullPath": "/BlackBoard/blackboard01.jpg",
-						"key": "/BlackBoard/blackboard01.jpg",
-						"width": 1024,
-						"height": 716,
-						"frameWidth": 1024,
-						"frameHeight": 716,
+						"id": 44,
+						"name": "greenbgr03.jpg",
+						"fullPath": "/BlackBoard/greenbgr03.jpg",
+						"key": "/BlackBoard/greenbgr03.jpg",
+						"width": 2560,
+						"height": 1600,
+						"frameWidth": 2560,
+						"frameHeight": 1600,
 						"frameMax": -1,
 						"margin": 0,
 						"spacing": 0,
 						"anchorX": 0,
 						"anchorY": 0,
 						"fps": 10,
-						"updated": 1417749375682,
-						"atlas": "",
-						"physics": {
-							"enable": 0
-						}
+						"updated": 1417871165062,
+						"atlas": ""
 					},
 					{
-						"id": 36,
-						"name": "bg2.png",
-						"fullPath": "/BlackBoard/bg2.png",
-						"key": "/BlackBoard/bg2.png",
-						"width": 960,
-						"height": 640,
-						"frameWidth": 960,
-						"frameHeight": 640,
+						"id": 46,
+						"name": "greenbgr04.jpg",
+						"fullPath": "/BlackBoard/greenbgr04.jpg",
+						"key": "/BlackBoard/greenbgr04.jpg",
+						"width": 615,
+						"height": 410,
+						"frameWidth": 615,
+						"frameHeight": 410,
 						"frameMax": -1,
 						"margin": 0,
 						"spacing": 0,
 						"anchorX": 0,
 						"anchorY": 0,
 						"fps": 10,
-						"updated": 1417853853903,
-						"atlas": "",
-						"physics": {
-							"enable": 0
-						}
+						"updated": 1417871165079,
+						"atlas": ""
+					},
+					{
+						"id": 48,
+						"name": "greenbgr.jpg",
+						"fullPath": "/BlackBoard/greenbgr.jpg",
+						"key": "/BlackBoard/greenbgr.jpg",
+						"width": 530,
+						"height": 350,
+						"frameWidth": 530,
+						"frameHeight": 350,
+						"frameMax": -1,
+						"margin": 0,
+						"spacing": 0,
+						"anchorX": 0,
+						"anchorY": 0,
+						"fps": 10,
+						"updated": 1417871165080,
+						"atlas": ""
 					}
 				],
 				"count": 0,
-				"id": 35,
+				"id": 47,
 				"fullPath": "/BlackBoard",
-				"isClosed": true
+				"isClosed": false
 			},
 			{
 				"name": "Charater",
@@ -369,7 +381,7 @@
 				}
 			}
 		],
-		"count": 42
+		"count": 48
 	},
 	"objects": {
 		"name": "objects",
@@ -1064,7 +1076,7 @@
 				"angle": 0,
 				"contents": [
 					{
-						"assetId": 36,
+						"assetId": 44,
 						"x": 1,
 						"y": -1,
 						"type": 0,
@@ -1074,8 +1086,8 @@
 						"physics": {
 							"enable": 0
 						},
-						"scaleX": 1.0666666666666667,
-						"scaleY": 1.2,
+						"scaleX": 0.4,
+						"scaleY": 0.48,
 						"angle": 0,
 						"alpha": 1,
 						"frame": 0,
@@ -1089,7 +1101,7 @@
 						"index": -1,
 						"fullPath": "/BlackGroup/blackboard01",
 						"movies": {},
-						"assetKey": "/BlackBoard/bg2.png"
+						"assetKey": "/BlackBoard/greenbgr03.jpg"
 					}
 				],
 				"isVisible": 1,

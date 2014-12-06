@@ -2,7 +2,7 @@
 var declareRand = function () { return Math.floor((Math.random() * 45) + 1); }
 var Score = 0;
 var lock = true;
-var TimeOut =90;
+var TimeOut =2;
 var isStart = false;
 var isGameOver = false;
 var timeInterval;
@@ -52,7 +52,7 @@ window.PhaserDemo.state.menu = {
 	    this.ScoreText = this.game.add.text(40, 40, 'Score: 0', { fontSize: '52px', fill: '#FFFF33' });
 	    this.TimeText = this.game.add.text(200, 40, 'Time: ' + TimeOut, { fontSize: '52px', fill: '#FFFF33' });
 	    this.arrow_up = mt.create("arrow_up");
-	    this.Text = mt.create("Text");
+	    this.QuestionText = mt.create("Text");
 	    //Blue Box sequence need re order 
 	    this.Box_Blue1 = mt.create("Box_Blue");
 	    this.Box_Blue2 = mt.create("Box_Blue1");
@@ -211,11 +211,30 @@ function StartGame() {
                 isStart = false;
                 isGameOver = true;
                 clearInterval(timeInterval);
+                GameOver();
             };
             content.TimeText.text = 'Time: ' + TimeOut;
         }, 1000);
     }
     isStart = true;
+}
+function GameOver() {
+    
+    content.game.add.text(content.game.world.centerX-350 , content.game.world.centerY-100, ' GameOver ', { font: 'bold 90pt Arial', fill: '#FFFF33' });
+
+    //Remove or Hide Object 
+    content.music.stop();
+    content.Instruction.destroy()
+    content.arrow_up.destroy()
+    content.QuestionText.destroy()
+    //Blue Box sequence need re order 
+    content.Box_Blue1.destroy()
+    content.Box_Blue2.destroy()
+    content.Box_Blue.destroy()
+    content.Text1.destroy()
+    content.Text2.destroy()
+    content.Text3.destroy()
+
 }
 function MobilecheckAnswer(sprite, pointer) {
 
@@ -237,12 +256,15 @@ function MobilecheckAnswer(sprite, pointer) {
         }
     }
 }
+function showCorrectAnswer() {
+    content.QuestionText.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
+}
 function AnsRight() {
     content.accept = mt.create("accept");
     Score += 10;
     content.ScoreText.text = 'Score : ' + Score;
-    content.Text.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
     content.correct.play();
+    showCorrectAnswer();
     setTimeout(function () {
         content.accept.kill(); randomQ(content.Question);
         lock = true;
@@ -250,8 +272,8 @@ function AnsRight() {
 }
 function AnsWrong() {
     content.deny = mt.create("deny")
-    content.Text.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
     content.wrong.play();
+    showCorrectAnswer();
     setTimeout(function () {
         content.deny.kill();
         randomQ(content.Question);
@@ -303,7 +325,9 @@ function randomQ(Question) {
     Question.operator = operator[rand];
     Question.QText = Qtxt;
     Question.QAnswer = ans;
-    content.Text.text = content.Question.QText;
+
+    content.QuestionText.text = content.Question.QText;
+
     //Rand Answer
     var Ans = [content.Text1, content.Text2, content.Text3];
     var count = Ans.length;
