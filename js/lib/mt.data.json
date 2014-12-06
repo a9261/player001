@@ -51,7 +51,7 @@
 				"count": 0,
 				"id": 35,
 				"fullPath": "/BlackBoard",
-				"isClosed": false
+				"isClosed": true
 			},
 			{
 				"name": "Charater",
@@ -282,7 +282,7 @@
 				"count": 0,
 				"id": 39,
 				"fullPath": "/Objects",
-				"isClosed": false
+				"isClosed": true
 			},
 			{
 				"id": 28,
@@ -300,6 +300,48 @@
 				"anchorY": 0,
 				"fps": 10,
 				"updated": 1417749513732,
+				"atlas": "",
+				"physics": {
+					"enable": 0
+				}
+			},
+			{
+				"id": 41,
+				"name": "Box_Orange.png",
+				"fullPath": "/Box_Orange.png",
+				"key": "/Box_Orange.png",
+				"width": 128,
+				"height": 128,
+				"frameWidth": 128,
+				"frameHeight": 128,
+				"frameMax": -1,
+				"margin": 0,
+				"spacing": 0,
+				"anchorX": 0,
+				"anchorY": 0,
+				"fps": 10,
+				"updated": 1417859497678,
+				"atlas": "",
+				"physics": {
+					"enable": 0
+				}
+			},
+			{
+				"id": 42,
+				"name": "Box_Sprite.png",
+				"fullPath": "/Box_Sprite.png",
+				"key": "/Box_Sprite.png",
+				"width": 276,
+				"height": 138,
+				"frameWidth": 138,
+				"frameHeight": 138,
+				"frameMax": -1,
+				"margin": 0,
+				"spacing": 0,
+				"anchorX": 0,
+				"anchorY": 0,
+				"fps": 10,
+				"updated": 1417859910823,
 				"atlas": "",
 				"physics": {
 					"enable": 0
@@ -327,7 +369,7 @@
 				}
 			}
 		],
-		"count": 40
+		"count": 42
 	},
 	"objects": {
 		"name": "objects",
@@ -357,7 +399,15 @@
 				"name": "soundOff",
 				"index": -1,
 				"fullPath": "/soundOff",
-				"movies": {},
+				"movies": {
+					"__main": {
+						"frames": [],
+						"info": {
+							"fps": 60
+						},
+						"subdata": []
+					}
+				},
 				"assetKey": "/Objects/soundOff.png"
 			},
 			{
@@ -385,7 +435,15 @@
 				"name": "soundOn",
 				"index": -1,
 				"fullPath": "/soundOn",
-				"movies": {},
+				"movies": {
+					"__main": {
+						"frames": [],
+						"info": {
+							"fps": 60
+						},
+						"subdata": []
+					}
+				},
 				"assetKey": "/Objects/soundOn.png"
 			},
 			{
@@ -787,31 +845,7 @@
 						"info": {
 							"fps": 60
 						},
-						"subdata": [
-							{
-								"id": 0.28046499425545335,
-								"objectId": "tmp1417747987914",
-								"name": "NewMovie",
-								"movies": {
-									"__main": {
-										"frames": [],
-										"info": {
-											"fps": 60,
-											"lastFrame": 60
-										}
-									}
-								},
-								"submovie": true,
-								"fullPath": "/accept/NewMovie"
-							}
-						]
-					},
-					"NewMovie": {
-						"frames": [],
-						"info": {
-							"fps": 60,
-							"lastFrame": 60
-						}
+						"subdata": []
 					}
 				},
 				"assetKey": "/Objects/accept.png"
@@ -914,7 +948,7 @@
 				"angle": 0,
 				"contents": [
 					{
-						"assetId": 28,
+						"assetId": 42,
 						"x": 454,
 						"y": 382,
 						"type": 0,
@@ -939,10 +973,10 @@
 						"index": -1,
 						"fullPath": "/BoxGroup/Box_Blue",
 						"movies": {},
-						"assetKey": "/Objects/Box_Blue.png"
+						"assetKey": "/Box_Sprite.png"
 					},
 					{
-						"assetId": 28,
+						"assetId": 42,
 						"x": 678,
 						"y": 381,
 						"type": 0,
@@ -967,10 +1001,10 @@
 						"index": -1,
 						"fullPath": "/BoxGroup/Box_Blue1",
 						"movies": {},
-						"assetKey": "/Objects/Box_Blue.png"
+						"assetKey": "/Box_Sprite.png"
 					},
 					{
-						"assetId": 28,
+						"assetId": 42,
 						"x": 201,
 						"y": 383,
 						"type": 0,
@@ -995,7 +1029,8 @@
 						"index": -1,
 						"fullPath": "/BoxGroup/Box_Blue2",
 						"movies": {},
-						"assetKey": "/Objects/Box_Blue.png"
+						"isClosed": true,
+						"assetKey": "/Box_Sprite.png"
 					}
 				],
 				"isVisible": 1,
@@ -1005,7 +1040,7 @@
 				"scaleY": 1,
 				"alpha": 1,
 				"fullPath": "/BoxGroup",
-				"isClosed": true,
+				"isClosed": false,
 				"physics": {
 					"enable": 0
 				},

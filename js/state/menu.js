@@ -64,6 +64,12 @@ window.PhaserDemo.state.menu = {
 	    this.Box_Blue.name = "0";
 	    this.Box_Blue1.name = "1";
 	    this.Box_Blue2.name = "2";
+
+	    this.Box_Blue.animations.add('Click', [0, 1, 0, 1, 0, 1, 0], 10, false);
+	    this.Box_Blue1.animations.add('Click', [0, 1, 0, 1, 0, 1, 0], 10, false);
+	    this.Box_Blue2.animations.add('Click', [0, 1, 0, 1, 0, 1, 0], 10, false);
+
+
 	    this.Box_Blue.inputEnabled = true;
 	    this.Box_Blue1.inputEnabled = true;
 	    this.Box_Blue2.inputEnabled = true;
@@ -111,6 +117,7 @@ window.PhaserDemo.state.menu = {
 	    randomQ(this.Question);
 	    //init AnswerList 
 	    this.AnsList = [this.Text1, this.Text2, this.Text3];
+	    this.BoxList = [this.Box_Blue, this.Box_Blue1, this.Box_Blue2];
 	    //initKeyboard
 	    this.game.input.keyboard.onDownCallback = this.keydown;
 
@@ -179,6 +186,8 @@ window.PhaserDemo.state.menu = {
 	                //When User Press UP or spaces 
 	                if ((e.keyCode == 32 || e.keyCode == 38) && lock) {
 	                    lock = false;
+	                    content.BoxList[content.ObjIndex.index].play('Click');
+	                  
                         //maybe can merger Desktop & Mobile
 	                    if (content.Question.QAnswer == content.AnsList[content.ObjIndex.index].text) {
 	                        AnsRight();
@@ -219,6 +228,7 @@ function MobilecheckAnswer(sprite, pointer) {
             var Touchindex = parseInt(sprite.name, 10);
             lock = false;
             content.arrow_up.x = content.box_X_velocity[Touchindex];
+            content.BoxList[Touchindex].play('Click');
             if (content.Question.QAnswer == content.AnsList[Touchindex].text) {
                 AnsRight();
             } else {
@@ -243,8 +253,10 @@ function AnsWrong() {
     content.Text.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
     content.wrong.play();
     setTimeout(function () {
-        content.deny.kill(); randomQ(content.Question);
+        content.deny.kill();
+        randomQ(content.Question);
         lock = true;
+
     }, 1000);
 }
 //This is check user move a arrow always in  [0,1,2] three Answers 
