@@ -6,6 +6,8 @@ var TimeOut =90;
 var isStart = false;
 var isGameOver = false;
 var timeInterval;
+
+
 window.PhaserDemo.state.menu = {
 
 	preload: function(){
@@ -23,23 +25,29 @@ window.PhaserDemo.state.menu = {
 	   // this.game.physics.startSystem(Phaser.Physics.P2JS);
         //init Scene All Objects
 	    this.BlackGroup = mt.create("BlackGroup");
-	    this.BoxGroup = mt.create("BoxGroup");
 	    this.Instruction = mt.create("Instrulction");
 	    this.ScoreText=this.game.add.text(40, 40, 'Score: 0', { fontSize: '52px', fill: '#FFFF33' });
 	    this.TimeText = this.game.add.text(200, 40, 'Time: ' + TimeOut, { fontSize: '52px', fill: '#FFFF33' });
 	    this.arrow_up = mt.create("arrow_up");
 	    this.Text = mt.create("Text");
+        //Blue Box sequence need re order 
+	    this.Box_Blue1 = mt.create("Box_Blue");
+	    this.Box_Blue2 = mt.create("Box_Blue1");
+	    this.Box_Blue = mt.create("Box_Blue2");
 	    this.Text1 = mt.create("Text1");
 	    this.Text2 = mt.create("Text2");
 	    this.Text3 = mt.create("Text3");
 
-	    this.Text1.inputEnabled = true;
-	    this.Text2.inputEnabled = true;
-	    this.Text3.inputEnabled = true;
+	    this.Box_Blue.name = "0";
+	    this.Box_Blue1.name = "1";
+	    this.Box_Blue2.name = "2";
+	    this.Box_Blue.inputEnabled = true;
+	    this.Box_Blue1.inputEnabled = true;
+	    this.Box_Blue2.inputEnabled = true;
         //Init Answer OnClick Event For Mobile
-	   // this.Text1.events.onInputDown.add(listener, this);
-	   // this.Text2.events.onInputDown.add(listener, this);
-	   // this.Text3.events.onInputDown.add(listener, this);
+	    this.Box_Blue.events.onInputDown.add(MobilecheckAnswer, this);
+	    this.Box_Blue1.events.onInputDown.add(MobilecheckAnswer, this);
+	    this.Box_Blue2.events.onInputDown.add(MobilecheckAnswer, this);
         //Enable physics  at arrow_up
 	   // this.game.physics.arcade.enable(this.arrow_up);
 	  //  this.game.physics.p2.enable(this.arrow_up);
@@ -67,7 +75,7 @@ window.PhaserDemo.state.menu = {
         this.music = this.game.add.audio('bgm', 1, true);
         this.correct = this.game.add.audio('correct', 1); 
         this.wrong = this.game.add.audio('wrong', 1);
-        this.music.play();
+       // this.music.play();
 
 	},
 	update: function () {
@@ -107,22 +115,12 @@ window.PhaserDemo.state.menu = {
 	    //    }
 	    //);
 
-	    var content = window.PhaserDemo.state.menu;
+	  
         //When User Press Key
-	    //StartGameTime 
 	    if (!isStart && !isGameOver) {
-	        isStart = true;
-	        timeInterval = setInterval(function () {
-	            TimeOut--;
-	            if (TimeOut == 0) {
-	                isStart = false;
-	                isGameOver = true;
-	                clearInterval(timeInterval);
-	            };
-	            content.TimeText.text = 'Time: ' + TimeOut;
-	        }, 1000);
+	        StartGame();
 	    }
-	    if (isStart) {
+	     if (isStart) {
                     //When User Press Left 
 	                if (e.keyCode == 37) {
 	                    content.ObjIndex.index--
@@ -136,35 +134,73 @@ window.PhaserDemo.state.menu = {
 	                //When User Press UP or spaces 
 	                if ((e.keyCode == 32 || e.keyCode == 38) && lock) {
 	                    lock = false;
+                        //maybe can merger Desktop & Mobile
 	                    if (content.Question.QAnswer == content.AnsList[content.ObjIndex.index].text) {
-	                            content.accept = mt.create("accept");
-	                            Score += 10;
-	                            content.ScoreText.text = 'Score : ' + Score;
-	                            content.Text.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
-	                            content.correct.play();
-	                            setTimeout(function () {
-	                                content.accept.kill(); randomQ(content.Question);
-	                                lock = true;
-	                            }, 1000);
-
+	                        AnsRight();
 	                    } else {
-	                        content.deny = mt.create("deny")
-	                        content.Text.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
-	                        content.wrong.play();
-	                        setTimeout(function () {
-	                            content.deny.kill(); randomQ(content.Question);
-	                            lock = true;
-	                        }, 1000);
-	       
+	                        AnsWrong();
 	                    }
 	                }
 	    } //Game isStart 
 	}
 };
-function checkAnswer() {
 
+//Gloab Scope put this , content is initializer  finished
+var content = window.PhaserDemo.state.menu;
+function StartGame() {
    
+    //StartGameTime 
+    if(!isStart){
+        timeInterval = setInterval(function () {
+            TimeOut--;
+            if (TimeOut == 0) {
+                isStart = false;
+                isGameOver = true;
+                clearInterval(timeInterval);
+            };
+            content.TimeText.text = 'Time: ' + TimeOut;
+        }, 1000);
+    }
+    isStart = true;
+}
+function MobilecheckAnswer(sprite, pointer) {
 
+    //When User Press Key
+    if (!isStart && !isGameOver) {
+        StartGame();
+    }
+    if (!isGameOver) {
+        if (lock) {
+            var Touchindex = parseInt(sprite.name, 10);
+            lock = false;
+            content.arrow_up.x = content.box_X_velocity[Touchindex];
+            if (content.Question.QAnswer == content.AnsList[Touchindex].text) {
+                AnsRight();
+            } else {
+                AnsWrong();
+            }
+        }
+    }
+}
+function AnsRight() {
+    content.accept = mt.create("accept");
+    Score += 10;
+    content.ScoreText.text = 'Score : ' + Score;
+    content.Text.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
+    content.correct.play();
+    setTimeout(function () {
+        content.accept.kill(); randomQ(content.Question);
+        lock = true;
+    }, 1000);
+}
+function AnsWrong() {
+    content.deny = mt.create("deny")
+    content.Text.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
+    content.wrong.play();
+    setTimeout(function () {
+        content.deny.kill(); randomQ(content.Question);
+        lock = true;
+    }, 1000);
 }
 //This is check user move a arrow always in  [0,1,2] three Answers 
 function checkindex(Obji) {
@@ -185,8 +221,7 @@ function randomQ(Question) {
     var Qtxt = '';
     var operator = ['+', '-', '/', '*'];
     var rand = Math.floor((Math.random() * 2) + 0);
-    var content = window.PhaserDemo.state.menu;
-
+    
     switch (rand) {
         case 0:
             ans = x + y;
