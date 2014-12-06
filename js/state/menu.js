@@ -14,23 +14,46 @@ window.PhaserDemo.state.menu = {
 	    this.game.load.audio('bgm', ['assets/Music/CatAstroPhi_shmup_normal.wav']);
 	    this.game.load.audio('correct', ['assets/Music/p-ping.mp3']);
 	    this.game.load.audio('wrong', ['assets/Music/WrongBuzzer.wav']);
-       
+	    this.BlackGroup = mt.create("BlackGroup");
+	    this.game.load.image('startbtn', 'assets/Objects/StartGam1.png');
+	    
 	},
-	
 	create: function(){
 		// you can create menu group in map editor and load it like this:
 	    // mt.create("menu");
+	    //Loading  
+	    this.game.load.onLoadStart.add(this.loadStart, this);
+	    this.game.load.onFileComplete.add(this.fileComplete, this);
+	    this.game.load.onLoadComplete.add(this.loadComplete, this);
+	    this.button = this.game.add.button(this.game.world.centerX -150, this.game.world.centerY, 'startbtn', 
+            function () {
+                this.game.load.start();
+            }
+            , this);
 
+	  
+
+	},
+	loadStart: function () {
+	    this.LoadingText = this.game.add.text(this.game.world.centerX - 90, this.game.world.centerY - 50, ' Loading ... ', { fontSize: '52px', fill: '#FFFF33' })
+	    this.button.visible = false;
+	},
+	fileComplete: function (progress, cacheKey, success, totalLoaded, totalFiles) {
+	    this.LoadingText.text = progress + ' %';
+	},
+	loadComplete: function () {
+        //Ojbect Load Complete
 	    //init Physics System
-	   // this.game.physics.startSystem(Phaser.Physics.P2JS);
-        //init Scene All Objects
-	    this.BlackGroup = mt.create("BlackGroup");
+	    // this.game.physics.startSystem(Phaser.Physics.P2JS);
+	    //init Scene All Objects
+	    this.LoadingText.visible = false;
+
 	    this.Instruction = mt.create("Instrulction");
-	    this.ScoreText=this.game.add.text(40, 40, 'Score: 0', { fontSize: '52px', fill: '#FFFF33' });
+	    this.ScoreText = this.game.add.text(40, 40, 'Score: 0', { fontSize: '52px', fill: '#FFFF33' });
 	    this.TimeText = this.game.add.text(200, 40, 'Time: ' + TimeOut, { fontSize: '52px', fill: '#FFFF33' });
 	    this.arrow_up = mt.create("arrow_up");
 	    this.Text = mt.create("Text");
-        //Blue Box sequence need re order 
+	    //Blue Box sequence need re order 
 	    this.Box_Blue1 = mt.create("Box_Blue");
 	    this.Box_Blue2 = mt.create("Box_Blue1");
 	    this.Box_Blue = mt.create("Box_Blue2");
@@ -44,38 +67,60 @@ window.PhaserDemo.state.menu = {
 	    this.Box_Blue.inputEnabled = true;
 	    this.Box_Blue1.inputEnabled = true;
 	    this.Box_Blue2.inputEnabled = true;
-        //Init Answer OnClick Event For Mobile
+	    //Init Answer OnClick Event For Mobile
 	    this.Box_Blue.events.onInputDown.add(MobilecheckAnswer, this);
 	    this.Box_Blue1.events.onInputDown.add(MobilecheckAnswer, this);
 	    this.Box_Blue2.events.onInputDown.add(MobilecheckAnswer, this);
-        //Enable physics  at arrow_up
-	   // this.game.physics.arcade.enable(this.arrow_up);
-	  //  this.game.physics.p2.enable(this.arrow_up);
-        //Init Choose Position Object
+
+	    //Sound Button
+	    this.SoundOn = mt.create('soundOn');
+	    this.SoundOff = mt.create('soundOff');
+	    this.SoundOn.inputEnabled = true;
+	    this.SoundOff.inputEnabled = true;
+
+	    this.SoundOff.visible = false;
+
+	    this.SoundOn.events.onInputDown.add(function () {
+	        content.music.stop();
+	        content.SoundOn.visible = false;
+	        content.SoundOff.visible = true;
+	    }, this);
+	    this.SoundOff.events.onInputDown.add(function () {
+	        content.music.play();
+	        content.SoundOff.visible = false;
+	        content.SoundOn.visible = true;
+	    }, this);
+
+	    //Enable physics  at arrow_up
+	    // this.game.physics.arcade.enable(this.arrow_up);
+	    //  this.game.physics.p2.enable(this.arrow_up);
+	    //Init Choose Position Object
 	    this.ObjIndex = {
 	        index: 0
 	    };
-        //Init Answer Position
+	    //Init Answer Position
 	    this.box_X_velocity = [200, 453, 678];
 	    this.Question = {
 	        x: '',
 	        y: '',
-            operator:'',
+	        operator: '',
 	        QText: '',
 	        QAnswer: ''
 	    };
-        //Init FirstQuestion
+	    //Init FirstQuestion
 	    randomQ(this.Question);
 	    //init AnswerList 
-        this.AnsList = [this.Text1, this.Text2, this.Text3];
-        //initKeyboard
-        this.game.input.keyboard.onDownCallback = this.keydown;
+	    this.AnsList = [this.Text1, this.Text2, this.Text3];
+	    //initKeyboard
+	    this.game.input.keyboard.onDownCallback = this.keydown;
 
 	    //initMusic
-        this.music = this.game.add.audio('bgm', 1, true);
-        this.correct = this.game.add.audio('correct', 1); 
-        this.wrong = this.game.add.audio('wrong', 1);
-       // this.music.play();
+	    this.music = this.game.add.audio('bgm', 1, true);
+	    this.correct = this.game.add.audio('correct', 1);
+	    this.wrong = this.game.add.audio('wrong', 1);
+	    this.music.play();
+
+        //initSound
 
 	},
 	update: function () {

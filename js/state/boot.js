@@ -72,7 +72,6 @@ window.PhaserDemo.state.boot = {
 	leaveIncorrectOrientation: function() {
 
 	    orientated = true;
-
 	    document.getElementById('orientation').style.display = 'none';
 
 	}

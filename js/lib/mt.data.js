@@ -25,10 +25,31 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "physics": {
 					        "enable": 0
 					    }
+					},
+					{
+					    "id": 36,
+					    "name": "bg2.png",
+					    "fullPath": "/BlackBoard/bg2.png",
+					    "key": "/BlackBoard/bg2.png",
+					    "width": 960,
+					    "height": 640,
+					    "frameWidth": 960,
+					    "frameHeight": 640,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417853853903,
+					    "atlas": "",
+					    "physics": {
+					        "enable": 0
+					    }
 					}
 			    ],
 			    "count": 0,
-			    "id": 25,
+			    "id": 35,
 			    "fullPath": "/BlackBoard",
 			    "isClosed": false
 			},
@@ -220,10 +241,46 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "fps": 10,
 					    "updated": 1417779191955,
 					    "atlas": ""
+					},
+					{
+					    "id": 38,
+					    "name": "soundOn.png",
+					    "fullPath": "/Objects/soundOn.png",
+					    "key": "/Objects/soundOn.png",
+					    "width": 128,
+					    "height": 128,
+					    "frameWidth": 128,
+					    "frameHeight": 128,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417858427266,
+					    "atlas": ""
+					},
+					{
+					    "id": 40,
+					    "name": "soundOff.png",
+					    "fullPath": "/Objects/soundOff.png",
+					    "key": "/Objects/soundOff.png",
+					    "width": 128,
+					    "height": 128,
+					    "frameWidth": 128,
+					    "frameHeight": 128,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417858427268,
+					    "atlas": ""
 					}
 			    ],
 			    "count": 0,
-			    "id": 33,
+			    "id": 39,
 			    "fullPath": "/Objects",
 			    "isClosed": false
 			},
@@ -270,11 +327,67 @@ window.mt = window.mt || {}; window.mt.data = {
 			    }
 			}
         ],
-        "count": 34
+        "count": 40
     },
     "objects": {
         "name": "objects",
         "contents": [
+			{
+			    "assetId": 40,
+			    "x": 13,
+			    "y": 718,
+			    "type": 0,
+			    "anchorX": 0,
+			    "anchorY": 0,
+			    "userData": {},
+			    "physics": {
+			        "enable": 0
+			    },
+			    "scaleX": 0.3125,
+			    "scaleY": 0.3125,
+			    "angle": 0,
+			    "alpha": 1,
+			    "frame": 0,
+			    "isVisible": 1,
+			    "isLocked": 0,
+			    "contents": [],
+			    "width": 40,
+			    "height": 40,
+			    "id": "tmp1417850091512",
+			    "name": "soundOff",
+			    "index": -1,
+			    "fullPath": "/soundOff",
+			    "movies": {},
+			    "assetKey": "/Objects/soundOff.png"
+			},
+			{
+			    "assetId": 38,
+			    "x": 13,
+			    "y": 718,
+			    "type": 0,
+			    "anchorX": 0,
+			    "anchorY": 0,
+			    "userData": {},
+			    "physics": {
+			        "enable": 0
+			    },
+			    "scaleX": 0.3125,
+			    "scaleY": 0.3125,
+			    "angle": 0,
+			    "alpha": 1,
+			    "frame": 0,
+			    "isVisible": 1,
+			    "isLocked": 0,
+			    "contents": [],
+			    "width": 40,
+			    "height": 40,
+			    "id": "tmp1417850091511",
+			    "name": "soundOn",
+			    "index": -1,
+			    "fullPath": "/soundOn",
+			    "movies": {},
+			    "assetKey": "/Objects/soundOn.png"
+			},
 			{
 			    "x": 831,
 			    "y": 50,
@@ -315,7 +428,15 @@ window.mt = window.mt || {}; window.mt.data = {
 			        "enable": 0
 			    },
 			    "userData": {},
-			    "movies": {},
+			    "movies": {
+			        "__main": {
+			            "frames": [],
+			            "info": {
+			                "fps": 60
+			            },
+			            "subdata": []
+			        }
+			    },
 			    "fill": "#8e0000"
 			},
 			{
@@ -327,95 +448,9 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "angle": 0,
 			    "contents": [
 					{
-					    "x": 889,
-					    "y": 530,
-					    "type": 2,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "scaleX": 1,
-					    "scaleY": 1,
-					    "angle": 0,
-					    "alpha": 1,
-					    "wordWrapWidth": 100,
-					    "style": {
-					        "fontFamily": "Arial",
-					        "fontSize": 32,
-					        "font": " 32px 'Arial'",
-					        "fill": "#ff7f00",
-					        "align": "left",
-					        "stroke": "black",
-					        "strokeThickness": 0,
-					        "wordWrap": false,
-					        "wordWrapWidth": 100,
-					        "shadowOffsetX": 0,
-					        "shadowOffsetY": 0,
-					        "shadowColor": "rgba(0,0,0,0)",
-					        "shadowBlur": 0
-					    },
-					    "align": "left",
-					    "wordWrap": 0,
-					    "isVisible": 1,
-					    "isLocked": 0,
-					    "text": "Chooice\n",
-					    "id": "tmp1417764050690",
-					    "name": "insText2",
-					    "index": -1,
-					    "fullPath": "/Instrulction/insText2",
-					    "shadow": {},
-					    "physics": {
-					        "enable": 0
-					    },
-					    "userData": {},
-					    "movies": {},
-					    "fill": "#ff7f00"
-					},
-					{
-					    "x": 804,
-					    "y": 530,
-					    "type": 2,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "scaleX": 1,
-					    "scaleY": 1,
-					    "angle": 0,
-					    "alpha": 1,
-					    "wordWrapWidth": 100,
-					    "style": {
-					        "fontFamily": "Arial",
-					        "fontSize": 32,
-					        "font": " 32px 'Arial'",
-					        "fill": "#ff7f00",
-					        "align": "left",
-					        "stroke": "black",
-					        "strokeThickness": 0,
-					        "wordWrap": false,
-					        "wordWrapWidth": 100,
-					        "shadowOffsetX": 0,
-					        "shadowOffsetY": 0,
-					        "shadowColor": "rgba(0,0,0,0)",
-					        "shadowBlur": 0
-					    },
-					    "align": "left",
-					    "wordWrap": 0,
-					    "isVisible": 1,
-					    "isLocked": 0,
-					    "text": "Ans",
-					    "id": "tmp1417764050689",
-					    "name": "insText1",
-					    "index": -1,
-					    "fullPath": "/Instrulction/insText1",
-					    "shadow": {},
-					    "physics": {
-					        "enable": 0
-					    },
-					    "userData": {},
-					    "movies": {},
-					    "fill": "#ff7f00"
-					},
-					{
 					    "assetId": 32,
 					    "x": 785,
-					    "y": 601,
+					    "y": 707,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -443,7 +478,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					{
 					    "assetId": 30,
 					    "x": 968,
-					    "y": 580,
+					    "y": 686,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -471,7 +506,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					{
 					    "assetId": 34,
 					    "x": 910,
-					    "y": 581,
+					    "y": 687,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -504,7 +539,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "scaleY": 1,
 			    "alpha": 1,
 			    "fullPath": "/Instrulction",
-			    "isClosed": false,
+			    "isClosed": true,
 			    "physics": {
 			        "enable": 0
 			    },
@@ -517,7 +552,10 @@ window.mt = window.mt || {}; window.mt.data = {
 			            },
 			            "subdata": []
 			        }
-			    }
+			    },
+			    "assetId": 38,
+			    "frame": 0,
+			    "assetKey": "/Objects/soundOn.png"
 			},
 			{
 			    "id": "tmp1417747987924",
@@ -529,7 +567,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "contents": [
 					{
 					    "x": 240,
-					    "y": 350,
+					    "y": 417,
 					    "type": 2,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -573,7 +611,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					},
 					{
 					    "x": 491,
-					    "y": 350,
+					    "y": 417,
 					    "type": 2,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -617,7 +655,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					},
 					{
 					    "x": 715,
-					    "y": 351,
+					    "y": 418,
 					    "type": 2,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -833,7 +871,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			{
 			    "assetId": 9,
 			    "x": 219,
-			    "y": 471,
+			    "y": 538,
 			    "type": 0,
 			    "anchorX": 0,
 			    "anchorY": 0,
@@ -877,8 +915,8 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "contents": [
 					{
 					    "assetId": 28,
-					    "x": 453,
-					    "y": 315,
+					    "x": 454,
+					    "y": 382,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -906,7 +944,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					{
 					    "assetId": 28,
 					    "x": 678,
-					    "y": 314,
+					    "y": 381,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -934,7 +972,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					{
 					    "assetId": 28,
 					    "x": 201,
-					    "y": 316,
+					    "y": 383,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -991,7 +1029,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "angle": 0,
 			    "contents": [
 					{
-					    "assetId": 26,
+					    "assetId": 36,
 					    "x": 1,
 					    "y": -1,
 					    "type": 0,
@@ -1001,22 +1039,22 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "physics": {
 					        "enable": 0
 					    },
-					    "scaleX": 1,
-					    "scaleY": 1,
+					    "scaleX": 1.0666666666666667,
+					    "scaleY": 1.2,
 					    "angle": 0,
 					    "alpha": 1,
 					    "frame": 0,
 					    "isVisible": 1,
-					    "isLocked": true,
+					    "isLocked": false,
 					    "contents": [],
 					    "width": 1024,
-					    "height": 716,
+					    "height": 768,
 					    "id": "tmp1417747987904",
 					    "name": "blackboard01",
 					    "index": -1,
 					    "fullPath": "/BlackGroup/blackboard01",
 					    "movies": {},
-					    "assetKey": "/BlackBoard/blackboard01.jpg"
+					    "assetKey": "/BlackBoard/bg2.png"
 					}
 			    ],
 			    "isVisible": 1,
@@ -1026,7 +1064,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "scaleY": 1,
 			    "alpha": 1,
 			    "fullPath": "/BlackGroup",
-			    "isClosed": true,
+			    "isClosed": false,
 			    "movies": {
 			        "__main": {
 			            "frames": [],
@@ -1113,8 +1151,8 @@ window.mt = window.mt || {}; window.mt.data = {
         "count": 0
     },
     "map": {
-        "cameraX": -1,
-        "cameraY": -2,
+        "cameraX": -3,
+        "cameraY": -5,
         "worldWidth": 1024,
         "worldHeight": 768,
         "viewportWidth": 1024,
