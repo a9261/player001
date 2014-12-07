@@ -1,22 +1,26 @@
 "use strict";
 var declareRand = function () { return Math.floor((Math.random() * 45) + 1); }
-var Score = 0;
-var lock = true;
-var TimeOut =3;
-var isStart = false;
-var isGameOver = false;
-var timeInterval;
-var arrowLoop;
-//FontSize
-var OriginalSize=90;
-var QNum = 90;
-var ANum = 50;
-var ScoreNum = 20;
-var FonType = {
-    QNum: 'QNum',
-    ANum: 'ANum',
-    ScoreNum:'ScoreNum'
-}
+
+    var Score = 0;
+    var lock = true;
+    var TimeOut =60;
+    var isStart = false;
+    var isGameOver = false;
+    var timeInterval;
+    var arrowLoop;
+    //FontSize
+    var OriginalSize=90;
+    var QNum = 90;
+    var ANum = 50;
+    var ScoreNum = 20;
+    var FonType = {
+        QNum: 'QNum',
+        ANum: 'ANum',
+        ScoreNum:'ScoreNum'
+    }
+    var TotalQ = 0;
+    var CorrectQ = 0;
+
 window.PhaserDemo.state.menu = {
 
     preload: function () {
@@ -24,11 +28,15 @@ window.PhaserDemo.state.menu = {
 	    this.game.load.audio('bgm', ['assets/Music/CatAstroPhi_shmup_normal.wav']);
 	    this.game.load.audio('correct', ['assets/Music/p-ping.mp3']);
 	    this.game.load.audio('wrong', ['assets/Music/WrongBuzzer.wav']);
+	    this.game.load.audio('Alarm', ['assets/Music/Alarm.wav']);
+	    this.game.load.audio('end', ['assets/Music/End.wav']);
+
 	    this.BlackGroup = mt.create("BlackGroup");
 	    this.game.load.image('startbtn', 'assets/Objects/StartGam1.png');
 
 	    this.game.load.spritesheet('Num', 'assets/Objects/hackerNum.png', OriginalSize, OriginalSize);
 
+	    this.game.load.spritesheet('backbtn', 'assets/Objects/restart.png', 150, 150);
 	    
 	},
 	create: function(){
@@ -142,6 +150,8 @@ window.PhaserDemo.state.menu = {
 	    this.music = this.game.add.audio('bgm', 1, true);
 	    this.correct = this.game.add.audio('correct', 1);
 	    this.wrong = this.game.add.audio('wrong', 1);
+	    this.alarm = this.game.add.audio('Alarm', 1);
+	    this.end = this.game.add.audio('end', 1);
 	    this.music.play();
       //TODO:Add GameOver Effect Sound
 
@@ -232,31 +242,73 @@ function StartGame() {
     //StartGameTime 
     if(!isStart){
         timeInterval = setInterval(function () {
+            if(TimeOut>0)
             TimeOut--;
+            content.TimeText.text = 'Time: ' + TimeOut;
+            //Warnning User Last Time
+            if (TimeOut == 10) {
+                content.alarm.play();
+            }
             if (TimeOut == 0) {
                 isStart = false;
                 isGameOver = true;
                 clearInterval(timeInterval);
                 GameOver();
             };
-            content.TimeText.text = 'Time: ' + TimeOut;
         }, 1000);
     }
     isStart = true;
 }
 function GameOver() {
     
-    content.game.add.text(content.game.world.centerX-350 , content.game.world.centerY-100, ' GameOver ', { font: 'bold 90pt Arial', fill: '#FFFF33' });
 
+
+    var Endtxt = content.game.add.text(content.game.world.centerX - 350, content.game.world.centerY + 100, ' GameOver ', { font: 'bold 90pt Arial', fill: '#FFFF33' });
+    var Percen = content.game.add.text((content.game.world.centerX / 2) - 200, content.game.world.centerY - 200, ' Great! Your Correct ' + CorrectQ + '/' + TotalQ + ' ' + Math.floor((CorrectQ / TotalQ) * 100) + '% Hits', { font: 'bold 37pt Arial', fill: '#FFFF33' });
+    var back =  content.game.add.sprite(content.game.world.centerX/2, content.game.world.centerY-100 , 'backbtn', 0);
+    var restart = content.game.add.sprite((content.game.world.centerX / 2) + 200, content.game.world.centerY - 100, 'backbtn', 1);
+
+    back.inputEnabled = true;
+    restart.inputEnabled = true;
+
+    back.events.onInputDown.add(function () {
+        console.log('I Back !');
+    }, content);
+    restart.events.onInputDown.add(function () {
+        setTimeout(function () {
+            lock = true;
+            isStart = false;
+            isGameOver = false;
+            TimeOut = 3;
+            Score = 0;
+            timeInterval;
+            arrowLoop;
+            TotalQ = 0;
+            CorrectQ = 0;
+
+            content.loadComplete();
+            back.destroy();
+            Endtxt.destroy();
+            Percen.destroy();
+            restart.destroy();
+           // back.visible = false;
+            //restart.visible = false;
+
+        }, 1000);
+    }, content);
+
+    content.end.play();
     //Remove or Hide Object 
+    content.ScoreText.destroy();
+    content.TimeText.destroy();
     content.music.stop();
-    content.Instruction.destroy()
-    content.arrow_up.destroy()
-    content.QuestionText.destroy()
+    content.Instruction.destroy();
+    content.arrow_up.destroy();
+    content.QuestionText.destroy();
     //Blue Box sequence need re order 
-    content.Box_Blue1.destroy()
-    content.Box_Blue2.destroy()
-    content.Box_Blue.destroy()
+    content.Box_Blue1.destroy();
+    content.Box_Blue2.destroy();
+    content.Box_Blue.destroy();
 
     content.AnumGroup.removeAll();
     content.QnumGroup.removeAll();
@@ -300,25 +352,34 @@ function showCorrectAnswer() {
 
 }
 function AnsRight() {
+    CorrectQ += 1;
+    TimeOut += 2;
     content.accept = mt.create("accept");
     Score += 10;
     content.ScoreText.text = 'Score : ' + Score;
     content.correct.play();
     showCorrectAnswer();
     setTimeout(function () {
-        content.accept.kill(); randomQ(content.Question);
+        content.accept.kill();
         lock = true;
+        if (!isGameOver) {
+            randomQ(content.Question);
+        }
     }, 1000);
 }
 function AnsWrong() {
+
+    if (TimeOut > 1)
+     TimeOut -= 1;
     content.deny = mt.create("deny")
     content.wrong.play();
     showCorrectAnswer();
     setTimeout(function () {
         content.deny.kill();
-        randomQ(content.Question);
         lock = true;
-
+        if (!isGameOver) {
+            randomQ(content.Question);
+        }
     }, 1000);
 }
 //This is check user move a arrow always in  [0,1,2] three Answers 
@@ -340,6 +401,8 @@ function resetLightAnimation() {
 }
 //Generator random Question 
 function randomQ(Question) {
+
+    TotalQ += 1;
 
     content.AnumGroup.removeAll();
     content.QnumGroup.removeAll();
@@ -383,7 +446,6 @@ function randomQ(Question) {
     for (var i = 0; i < count; i++) {
         if (Ans.length != 1) {
             var rand = Math.floor((Math.random() * Ans.length) + 0);
-            console.log(rand);
             content.AnsList[Ans[rand]] = declareRand();
             Ans.splice(rand, 1);
         } else {
