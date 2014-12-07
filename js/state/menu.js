@@ -2,20 +2,33 @@
 var declareRand = function () { return Math.floor((Math.random() * 45) + 1); }
 var Score = 0;
 var lock = true;
-var TimeOut =2;
+var TimeOut =3;
 var isStart = false;
 var isGameOver = false;
 var timeInterval;
-
-
+var arrowLoop;
+//FontSize
+var OriginalSize=90;
+var QNum = 90;
+var ANum = 50;
+var ScoreNum = 20;
+var FonType = {
+    QNum: 'QNum',
+    ANum: 'ANum',
+    ScoreNum:'ScoreNum'
+}
 window.PhaserDemo.state.menu = {
 
-	preload: function(){
+    preload: function () {
+
 	    this.game.load.audio('bgm', ['assets/Music/CatAstroPhi_shmup_normal.wav']);
 	    this.game.load.audio('correct', ['assets/Music/p-ping.mp3']);
 	    this.game.load.audio('wrong', ['assets/Music/WrongBuzzer.wav']);
 	    this.BlackGroup = mt.create("BlackGroup");
 	    this.game.load.image('startbtn', 'assets/Objects/StartGam1.png');
+
+	    this.game.load.spritesheet('Num', 'assets/Objects/hackerNum.png', OriginalSize, OriginalSize);
+
 	    
 	},
 	create: function(){
@@ -52,23 +65,28 @@ window.PhaserDemo.state.menu = {
 	    this.ScoreText = this.game.add.text(40, 40, 'Score: 0', { fontSize: '52px', fill: '#FFFF33' });
 	    this.TimeText = this.game.add.text(200, 40, 'Time: ' + TimeOut, { fontSize: '52px', fill: '#FFFF33' });
 	    this.arrow_up = mt.create("arrow_up");
+
+        //TODO: Add arrow Animation
+	 
+
 	    this.QuestionText = mt.create("Text");
 	    //Blue Box sequence need re order 
-	    this.Box_Blue1 = mt.create("Box_Blue");
-	    this.Box_Blue2 = mt.create("Box_Blue1");
-	    this.Box_Blue = mt.create("Box_Blue2");
-	    this.Text1 = mt.create("Text1");
-	    this.Text2 = mt.create("Text2");
-	    this.Text3 = mt.create("Text3");
+	    this.Box_Blue = mt.create("bulb_on_off");
+	    this.Box_Blue1 = mt.create("bulb_on_off1");
+	    this.Box_Blue2 = mt.create("bulb_on_off2");
+	  
 
 	    this.Box_Blue.name = "0";
 	    this.Box_Blue1.name = "1";
 	    this.Box_Blue2.name = "2";
 
-	    this.Box_Blue.animations.add('Click', [0, 1, 0, 1, 0, 1, 0], 10, false);
-	    this.Box_Blue1.animations.add('Click', [0, 1, 0, 1, 0, 1, 0], 10, false);
-	    this.Box_Blue2.animations.add('Click', [0, 1, 0, 1, 0, 1, 0], 10, false);
+	    this.Box_Blue.animations.add('Wrong', [0, 1, 0, 1, 0, 1], 10, false);
+	    this.Box_Blue1.animations.add('Wrong', [0, 1, 0, 1, 0, 1,], 10, false);
+	    this.Box_Blue2.animations.add('Wrong', [0, 1, 0, 1, 0, 1], 10, false);
 
+	    this.Box_Blue.animations.add('Right', [0, 1, 0, 1, 0, 1, 0], 10, false);
+	    this.Box_Blue1.animations.add('Right', [0, 1, 0, 1, 0, 1, 0], 10, false);
+	    this.Box_Blue2.animations.add('Right', [0, 1, 0, 1, 0, 1, 0], 10, false);
 
 	    this.Box_Blue.inputEnabled = true;
 	    this.Box_Blue1.inputEnabled = true;
@@ -105,7 +123,7 @@ window.PhaserDemo.state.menu = {
 	        index: 0
 	    };
 	    //Init Answer Position
-	    this.box_X_velocity = [200, 453, 678];
+	    this.box_X_velocity = [179, 445, 701];
 	    this.Question = {
 	        x: '',
 	        y: '',
@@ -113,25 +131,32 @@ window.PhaserDemo.state.menu = {
 	        QText: '',
 	        QAnswer: ''
 	    };
-	    //Init FirstQuestion
-	    randomQ(this.Question);
-	    //init AnswerList 
-	    this.AnsList = [this.Text1, this.Text2, this.Text3];
+	   
+	    ////init AnswerList 
+	    this.AnsList = ['0','0','0'];
 	    this.BoxList = [this.Box_Blue, this.Box_Blue1, this.Box_Blue2];
 	    //initKeyboard
 	    this.game.input.keyboard.onDownCallback = this.keydown;
 
-	    //initMusic
+	    ////initMusic
 	    this.music = this.game.add.audio('bgm', 1, true);
 	    this.correct = this.game.add.audio('correct', 1);
 	    this.wrong = this.game.add.audio('wrong', 1);
 	    this.music.play();
+      //TODO:Add GameOver Effect Sound
 
-        //initSound
+
+	    //Init NumGroup 
+	    this.QnumGroup = this.game.add.group();
+	    this.AnumGroup = this.game.add.group();
+	    this.SnumGroup = this.game.add.group();
+	    //Init FirstQuestion
+	    randomQ(this.Question);
+	 
 
 	},
 	update: function () {
-
+	    
 	},
 	keydown: function (e) {
 
@@ -172,7 +197,7 @@ window.PhaserDemo.state.menu = {
 	    if (!isStart && !isGameOver) {
 	        StartGame();
 	    }
-	     if (isStart) {
+	    if (isStart && !isGameOver) {
                     //When User Press Left 
 	                if (e.keyCode == 37) {
 	                    content.ObjIndex.index--
@@ -186,12 +211,13 @@ window.PhaserDemo.state.menu = {
 	                //When User Press UP or spaces 
 	                if ((e.keyCode == 32 || e.keyCode == 38) && lock) {
 	                    lock = false;
-	                    content.BoxList[content.ObjIndex.index].play('Click');
 	                  
                         //maybe can merger Desktop & Mobile
-	                    if (content.Question.QAnswer == content.AnsList[content.ObjIndex.index].text) {
+	                    if (content.Question.QAnswer == content.AnsList[content.ObjIndex.index]) {
+	                        content.BoxList[content.ObjIndex.index].play('Right');
 	                        AnsRight();
 	                    } else {
+	                        content.BoxList[content.ObjIndex.index].play('Wrong');
 	                        AnsWrong();
 	                    }
 	                }
@@ -231,10 +257,9 @@ function GameOver() {
     content.Box_Blue1.destroy()
     content.Box_Blue2.destroy()
     content.Box_Blue.destroy()
-    content.Text1.destroy()
-    content.Text2.destroy()
-    content.Text3.destroy()
 
+    content.AnumGroup.removeAll();
+    content.QnumGroup.removeAll();
 }
 function MobilecheckAnswer(sprite, pointer) {
 
@@ -248,7 +273,7 @@ function MobilecheckAnswer(sprite, pointer) {
             lock = false;
             content.arrow_up.x = content.box_X_velocity[Touchindex];
             content.BoxList[Touchindex].play('Click');
-            if (content.Question.QAnswer == content.AnsList[Touchindex].text) {
+            if (content.Question.QAnswer == content.AnsList[Touchindex]) {
                 AnsRight();
             } else {
                 AnsWrong();
@@ -256,8 +281,23 @@ function MobilecheckAnswer(sprite, pointer) {
         }
     }
 }
+
+
 function showCorrectAnswer() {
-    content.QuestionText.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
+
+    //content.QuestionText.text = 'Q: ' + content.Question.x + '  ' + content.Question.operator + '  ' + content.Question.y + ' = ' + content.Question.QAnswer;
+    content.QuestionText.text = 'Q: ' + '¡@¡@' + content.Question.operator + '¡@¡@= '
+    var splistr = content.Question.QAnswer.toString().split('');
+    var QtxtX = content.QuestionText.x;
+    var QtxtY = content.QuestionText.y;
+
+    if (splistr.length > 1) {
+        AddNum(splistr[0].toString(), QtxtX + 630, QtxtY, FonType.QNum, content.QnumGroup);
+        AddNum(splistr[1].toString(), QtxtX + 700, QtxtY, FonType.QNum, content.QnumGroup);
+    } else {
+        AddNum(splistr[0].toString(), QtxtX + 630, QtxtY, FonType.QNum, content.QnumGroup);
+    }
+
 }
 function AnsRight() {
     content.accept = mt.create("accept");
@@ -291,13 +331,22 @@ function checkindex(Obji) {
     }
     return Obji.index;
 }
+function resetLightAnimation() {
+    //reset Light Animation 
+    for (var i = 0; i < content.BoxList.length; i++) {
+       // console.log();
+        content.BoxList[i].animations.frame = 1
+    }
+}
 //Generator random Question 
 function randomQ(Question) {
+
+
+    resetLightAnimation();
 
     var x = declareRand();
     var y = declareRand();
     var ans = 0;
-    var Qtxt = '';
     var operator = ['+', '-', '/', '*'];
     var rand = Math.floor((Math.random() * 2) + 0);
     
@@ -319,27 +368,95 @@ function randomQ(Question) {
             break;
     }
 
-    Qtxt = 'Q: ' + x + '  ' + operator[rand] + '  ' + y + ' = ?';
     Question.x = x;
     Question.y = y;
     Question.operator = operator[rand];
-    Question.QText = Qtxt;
+    Question.QText = 'Q: ' + x + '  ' + operator[rand] + '  ' + y + ' = ?';
     Question.QAnswer = ans;
 
-    content.QuestionText.text = content.Question.QText;
+    
 
     //Rand Answer
-    var Ans = [content.Text1, content.Text2, content.Text3];
+    var Ans = [0,1,2];
     var count = Ans.length;
-
     for (var i = 0; i < count; i++) {
         if (Ans.length != 1) {
             var rand = Math.floor((Math.random() * Ans.length) + 0);
-            Ans[rand].text = declareRand();
+            console.log(rand);
+            content.AnsList[Ans[rand]] = declareRand();
             Ans.splice(rand, 1);
         } else {
-            Ans[0].text = content.Question.QAnswer;
+            content.AnsList[Ans[0]] = content.Question.QAnswer;
             Ans.splice(0, 1);
         }
     }
+ 
+    //setting num on Light 
+    ////init AnswerList 
+    //this.AnsList = ['0', '0', '0'];
+    //this.BoxList = [this.Box_Blue, this.Box_Blue1, this.Box_Blue2];
+   
+    content.AnumGroup.removeAll();
+
+    for (var i = 0; i < count; i++) {
+        //console.log(content.AnsList[i].toString());
+        var splitstr = content.AnsList[i].toString().split('');
+        var xPosition = content.BoxList[i].x;
+        var yPosition = content.BoxList[i].y;
+        if (splitstr.length > 1) {
+            AddNum(splitstr[0].toString(), xPosition + 50, yPosition + 50, FonType.ANum, content.AnumGroup);
+            AddNum(splitstr[1].toString(), xPosition + 80, yPosition + 50, FonType.ANum, content.AnumGroup);
+           
+        } else {
+            AddNum(splitstr[0].toString(), xPosition + 50, yPosition + 50, FonType.ANum, content.AnumGroup);
+        }
+    }
+    ////setting num on QuestionText 
+    content.QnumGroup.removeAll();
+
+    var QtxtX = content.QuestionText.x;
+    var QtxtY = content.QuestionText.y;
+
+ 
+
+    var Xsplitstr = Question.x.toString().split('');
+    var Ysplitstr = Question.y.toString().split('');
+
+    if (Xsplitstr.length > 1) {
+        AddNum(Xsplitstr[0].toString(), QtxtX + 150, QtxtY , FonType.QNum, content.QnumGroup);
+        AddNum(Xsplitstr[1].toString(), QtxtX + 230, QtxtY , FonType.QNum, content.QnumGroup);
+    } else {
+        AddNum(Xsplitstr[0].toString(), QtxtX + 150, QtxtY, FonType.QNum, content.QnumGroup);
+    }
+
+    if (Ysplitstr.length > 1) {
+        AddNum(Ysplitstr[0].toString(), QtxtX + 400, QtxtY , FonType.QNum, content.QnumGroup);
+        AddNum(Ysplitstr[1].toString(), QtxtX + 470, QtxtY, FonType.QNum, content.QnumGroup);
+    } else {
+        AddNum(Ysplitstr[0].toString(), QtxtX + 400, QtxtY, FonType.QNum, content.QnumGroup);
+    }
+
+    content.QuestionText.text = 'Q: ' + '¡@¡@' + Question.operator + '¡@¡@= ?';
+
+}
+function AddNum(num, x, y, type,group) {
+
+    if (typeof group === 'undefined') { group = content.game.world; }
+
+    var addsprite = content.game.add.sprite(x, y, 'Num', parseInt(num, 10), group);
+
+   if (type == FonType.ANum) {
+       addsprite.scale.x= (ANum/OriginalSize);
+       addsprite.scale.y = (ANum / OriginalSize);
+   }
+   if (type == FonType.QNum) {
+       addsprite.scale.x = (QNum / OriginalSize);
+       addsprite.scale.y = (QNum / OriginalSize);
+   }
+   if (type == FonType.ScoreNum) {
+       addsprite.scale.x = (ScoreNum / OriginalSize);
+       addsprite.scale.y = (ScoreNum / OriginalSize);
+   }
+
+    //console.log(content.game);
 }

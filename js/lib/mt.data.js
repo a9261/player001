@@ -6,24 +6,6 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "name": "BlackBoard",
 			    "contents": [
 					{
-					    "id": 44,
-					    "name": "greenbgr03.jpg",
-					    "fullPath": "/BlackBoard/greenbgr03.jpg",
-					    "key": "/BlackBoard/greenbgr03.jpg",
-					    "width": 2560,
-					    "height": 1600,
-					    "frameWidth": 2560,
-					    "frameHeight": 1600,
-					    "frameMax": -1,
-					    "margin": 0,
-					    "spacing": 0,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "fps": 10,
-					    "updated": 1417871165062,
-					    "atlas": ""
-					},
-					{
 					    "id": 46,
 					    "name": "greenbgr04.jpg",
 					    "fullPath": "/BlackBoard/greenbgr04.jpg",
@@ -39,7 +21,10 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "anchorY": 0,
 					    "fps": 10,
 					    "updated": 1417871165079,
-					    "atlas": ""
+					    "atlas": "",
+					    "physics": {
+					        "enable": 0
+					    }
 					},
 					{
 					    "id": 48,
@@ -57,36 +42,41 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "anchorY": 0,
 					    "fps": 10,
 					    "updated": 1417871165080,
-					    "atlas": ""
-					}
-			    ],
-			    "count": 0,
-			    "id": 47,
-			    "fullPath": "/BlackBoard",
-			    "isClosed": false
-			},
-			{
-			    "name": "Charater",
-			    "contents": [
+					    "atlas": "",
+					    "physics": {
+					        "enable": 0
+					    }
+					},
 					{
-					    "id": 14,
-					    "name": "p01.png",
-					    "fullPath": "/Charater/p01.png",
-					    "key": "/Charater/p01.png",
-					    "width": 350,
-					    "height": 640,
-					    "frameWidth": 350,
-					    "frameHeight": 640,
+					    "id": 49,
+					    "name": "greenbgr03.jpg",
+					    "fullPath": "/BlackBoard/greenbgr03.jpg",
+					    "key": "/greenbgr03.jpg",
+					    "width": 2560,
+					    "height": 1600,
+					    "frameWidth": 2560,
+					    "frameHeight": 1600,
 					    "frameMax": -1,
 					    "margin": 0,
 					    "spacing": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
 					    "fps": 10,
-					    "updated": 1417749356906,
-					    "atlas": ""
+					    "updated": 1417872362773,
+					    "atlas": "",
+					    "physics": {
+					        "enable": 0
+					    }
 					}
 			    ],
+			    "count": 0,
+			    "id": 50,
+			    "fullPath": "/BlackBoard",
+			    "isClosed": true
+			},
+			{
+			    "name": "Charater",
+			    "contents": [],
 			    "count": 0,
 			    "id": 13,
 			    "fullPath": "/Charater",
@@ -141,10 +131,10 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "name": "Objects",
 			    "contents": [
 					{
-					    "id": 11,
-					    "name": "deny.png",
-					    "fullPath": "/Objects/deny.png",
-					    "key": "/Objects/deny.png",
+					    "id": 7,
+					    "name": "accept.png",
+					    "fullPath": "/Objects/accept.png",
+					    "key": "/Objects/accept.png",
 					    "width": 128,
 					    "height": 128,
 					    "frameWidth": 128,
@@ -155,7 +145,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "anchorX": 0,
 					    "anchorY": 0,
 					    "fps": 10,
-					    "updated": 1417749356905,
+					    "updated": 1417749356903,
 					    "atlas": "",
 					    "physics": {
 					        "enable": 0
@@ -177,24 +167,6 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "anchorY": 0,
 					    "fps": 10,
 					    "updated": 1417749356908,
-					    "atlas": ""
-					},
-					{
-					    "id": 7,
-					    "name": "accept.png",
-					    "fullPath": "/Objects/accept.png",
-					    "key": "/Objects/accept.png",
-					    "width": 128,
-					    "height": 128,
-					    "frameWidth": 128,
-					    "frameHeight": 128,
-					    "frameMax": -1,
-					    "margin": 0,
-					    "spacing": 0,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "fps": 10,
-					    "updated": 1417749356903,
 					    "atlas": "",
 					    "physics": {
 					        "enable": 0
@@ -237,24 +209,6 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "atlas": ""
 					},
 					{
-					    "id": 30,
-					    "name": "Right_key.png",
-					    "fullPath": "/Objects/Right_key.png",
-					    "key": "/Objects/Right_key.png",
-					    "width": 40,
-					    "height": 40,
-					    "frameWidth": 40,
-					    "frameHeight": 40,
-					    "frameMax": -1,
-					    "margin": 0,
-					    "spacing": 0,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "fps": 10,
-					    "updated": 1417779191955,
-					    "atlas": ""
-					},
-					{
 					    "id": 38,
 					    "name": "soundOn.png",
 					    "fullPath": "/Objects/soundOn.png",
@@ -273,6 +227,45 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "atlas": ""
 					},
 					{
+					    "id": 30,
+					    "name": "Right_key.png",
+					    "fullPath": "/Objects/Right_key.png",
+					    "key": "/Objects/Right_key.png",
+					    "width": 40,
+					    "height": 40,
+					    "frameWidth": 40,
+					    "frameHeight": 40,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417779191955,
+					    "atlas": ""
+					},
+					{
+					    "id": 11,
+					    "name": "deny.png",
+					    "fullPath": "/Objects/deny.png",
+					    "key": "/Objects/deny.png",
+					    "width": 128,
+					    "height": 128,
+					    "frameWidth": 128,
+					    "frameHeight": 128,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417749356905,
+					    "atlas": "",
+					    "physics": {
+					        "enable": 0
+					    }
+					},
+					{
 					    "id": 40,
 					    "name": "soundOff.png",
 					    "fullPath": "/Objects/soundOff.png",
@@ -289,12 +282,72 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "fps": 10,
 					    "updated": 1417858427268,
 					    "atlas": ""
+					},
+					{
+					    "id": 54,
+					    "name": "hackerNum.png",
+					    "fullPath": "/Objects/hackerNum.png",
+					    "key": "/hackerNum.png",
+					    "width": 900,
+					    "height": 90,
+					    "frameWidth": 90,
+					    "frameHeight": 90,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417876004484,
+					    "atlas": "",
+					    "physics": {
+					        "enable": 0
+					    }
+					},
+					{
+					    "id": 59,
+					    "name": "wire.png",
+					    "fullPath": "/Objects/wire.png",
+					    "key": "/Objects/wire.png",
+					    "width": 120,
+					    "height": 300,
+					    "frameWidth": 120,
+					    "frameHeight": 300,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417884608375,
+					    "atlas": ""
+					},
+					{
+					    "id": 57,
+					    "name": "bulb_on_off.png",
+					    "fullPath": "/Objects/bulb_on_off.png",
+					    "key": "/bulb_on_off.png",
+					    "width": 828,
+					    "height": 617,
+					    "frameWidth": 414,
+					    "frameHeight": 617,
+					    "frameMax": -1,
+					    "margin": 0,
+					    "spacing": 0,
+					    "anchorX": 0,
+					    "anchorY": 0,
+					    "fps": 10,
+					    "updated": 1417883189174,
+					    "atlas": "",
+					    "physics": {
+					        "enable": 0
+					    }
 					}
 			    ],
 			    "count": 0,
-			    "id": 39,
+			    "id": 58,
 			    "fullPath": "/Objects",
-			    "isClosed": true
+			    "isClosed": false
 			},
 			{
 			    "id": 28,
@@ -381,47 +434,11 @@ window.mt = window.mt || {}; window.mt.data = {
 			    }
 			}
         ],
-        "count": 48
+        "count": 59
     },
     "objects": {
         "name": "objects",
         "contents": [
-			{
-			    "assetId": 40,
-			    "x": 13,
-			    "y": 718,
-			    "type": 0,
-			    "anchorX": 0,
-			    "anchorY": 0,
-			    "userData": {},
-			    "physics": {
-			        "enable": 0
-			    },
-			    "scaleX": 0.3125,
-			    "scaleY": 0.3125,
-			    "angle": 0,
-			    "alpha": 1,
-			    "frame": 0,
-			    "isVisible": 1,
-			    "isLocked": 0,
-			    "contents": [],
-			    "width": 40,
-			    "height": 40,
-			    "id": "tmp1417850091512",
-			    "name": "soundOff",
-			    "index": -1,
-			    "fullPath": "/soundOff",
-			    "movies": {
-			        "__main": {
-			            "frames": [],
-			            "info": {
-			                "fps": 60
-			            },
-			            "subdata": []
-			        }
-			    },
-			    "assetKey": "/Objects/soundOff.png"
-			},
 			{
 			    "assetId": 38,
 			    "x": 13,
@@ -457,6 +474,42 @@ window.mt = window.mt || {}; window.mt.data = {
 			        }
 			    },
 			    "assetKey": "/Objects/soundOn.png"
+			},
+			{
+			    "assetId": 40,
+			    "x": 13,
+			    "y": 718,
+			    "type": 0,
+			    "anchorX": 0,
+			    "anchorY": 0,
+			    "userData": {},
+			    "physics": {
+			        "enable": 0
+			    },
+			    "scaleX": 0.3125,
+			    "scaleY": 0.3125,
+			    "angle": 0,
+			    "alpha": 1,
+			    "frame": 0,
+			    "isVisible": 1,
+			    "isLocked": 0,
+			    "contents": [],
+			    "width": 40,
+			    "height": 40,
+			    "id": "tmp1417850091512",
+			    "name": "soundOff",
+			    "index": -1,
+			    "fullPath": "/soundOff",
+			    "movies": {
+			        "__main": {
+			            "frames": [],
+			            "info": {
+			                "fps": 60
+			            },
+			            "subdata": []
+			        }
+			    },
+			    "assetKey": "/Objects/soundOff.png"
 			},
 			{
 			    "x": 831,
@@ -628,208 +681,9 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "assetKey": "/Objects/soundOn.png"
 			},
 			{
-			    "id": "tmp1417747987924",
-			    "name": "Group",
-			    "x": 0,
-			    "y": 0,
-			    "type": 1,
-			    "angle": 0,
-			    "contents": [
-					{
-					    "x": 240,
-					    "y": 417,
-					    "type": 2,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "scaleX": 1,
-					    "scaleY": 1,
-					    "angle": 0,
-					    "alpha": 1,
-					    "wordWrapWidth": 100,
-					    "style": {
-					        "fontFamily": "Arial",
-					        "fontSize": 96,
-					        "font": "bold 96px 'Arial'",
-					        "fill": "#ffffff",
-					        "align": "left",
-					        "stroke": "black",
-					        "strokeThickness": 0,
-					        "wordWrap": false,
-					        "wordWrapWidth": 100,
-					        "shadowOffsetX": 0,
-					        "shadowOffsetY": 0,
-					        "shadowColor": "rgba(0,0,0,0)",
-					        "shadowBlur": 0,
-					        "fontWeight": "bold"
-					    },
-					    "align": "left",
-					    "wordWrap": 0,
-					    "isVisible": 1,
-					    "isLocked": false,
-					    "text": "7",
-					    "id": "tmp1417747987926",
-					    "name": "Text1",
-					    "index": -1,
-					    "fullPath": "/Group/Text1",
-					    "shadow": {},
-					    "physics": {
-					        "enable": 0
-					    },
-					    "userData": {},
-					    "movies": {},
-					    "fill": "#ffffff"
-					},
-					{
-					    "x": 491,
-					    "y": 417,
-					    "type": 2,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "scaleX": 1,
-					    "scaleY": 1,
-					    "angle": 0,
-					    "alpha": 1,
-					    "wordWrapWidth": 100,
-					    "style": {
-					        "fontFamily": "Arial",
-					        "fontSize": 96,
-					        "font": "bold 96px 'Arial'",
-					        "fill": "#ffffff",
-					        "align": "left",
-					        "stroke": "black",
-					        "strokeThickness": 0,
-					        "wordWrap": false,
-					        "wordWrapWidth": 100,
-					        "shadowOffsetX": 0,
-					        "shadowOffsetY": 0,
-					        "shadowColor": "rgba(0,0,0,0)",
-					        "shadowBlur": 0,
-					        "fontWeight": "bold"
-					    },
-					    "align": "left",
-					    "wordWrap": 0,
-					    "isVisible": 1,
-					    "isLocked": 0,
-					    "text": "7",
-					    "id": "tmp1417747987921",
-					    "name": "Text2",
-					    "index": -1,
-					    "fullPath": "/Group/Text2",
-					    "shadow": {},
-					    "physics": {
-					        "enable": 0
-					    },
-					    "userData": {},
-					    "movies": {},
-					    "fill": "#ffffff"
-					},
-					{
-					    "x": 715,
-					    "y": 418,
-					    "type": 2,
-					    "anchorX": 0,
-					    "anchorY": 0,
-					    "scaleX": 1,
-					    "scaleY": 1,
-					    "angle": 0,
-					    "alpha": 1,
-					    "wordWrapWidth": 100,
-					    "style": {
-					        "fontFamily": "Arial",
-					        "fontSize": 96,
-					        "font": "bold 96px 'Arial'",
-					        "fill": "#ffffff",
-					        "align": "left",
-					        "stroke": "black",
-					        "strokeThickness": 0,
-					        "wordWrap": false,
-					        "wordWrapWidth": 100,
-					        "shadowOffsetX": 0,
-					        "shadowOffsetY": 0,
-					        "shadowColor": "rgba(0,0,0,0)",
-					        "shadowBlur": 0,
-					        "fontWeight": "bold"
-					    },
-					    "align": "left",
-					    "wordWrap": 0,
-					    "isVisible": 1,
-					    "isLocked": 0,
-					    "text": "7",
-					    "id": "tmp1417747987923",
-					    "name": "Text3",
-					    "index": -1,
-					    "fullPath": "/Group/Text3",
-					    "shadow": {},
-					    "physics": {
-					        "enable": 0
-					    },
-					    "userData": {},
-					    "movies": {},
-					    "fill": "#ffffff"
-					}
-			    ],
-			    "isVisible": 1,
-			    "isLocked": false,
-			    "isFixedToCamera": 0,
-			    "scaleX": 1,
-			    "scaleY": 1,
-			    "alpha": 1,
-			    "fullPath": "/Group",
-			    "isClosed": true,
-			    "movies": {
-			        "__main": {
-			            "frames": [],
-			            "info": {
-			                "fps": 60
-			            },
-			            "subdata": []
-			        }
-			    },
-			    "physics": {
-			        "enable": 0
-			    },
-			    "userData": {}
-			},
-			{
-			    "assetId": 11,
-			    "x": 831,
-			    "y": 138,
-			    "type": 0,
-			    "anchorX": 0,
-			    "anchorY": 0,
-			    "userData": {},
-			    "physics": {
-			        "enable": 0
-			    },
-			    "scaleX": 1,
-			    "scaleY": 1,
-			    "angle": 0,
-			    "alpha": 1,
-			    "frame": 0,
-			    "isVisible": 1,
-			    "isLocked": false,
-			    "contents": [],
-			    "width": 128,
-			    "height": 128,
-			    "id": "tmp1417747987915",
-			    "name": "deny",
-			    "index": -1,
-			    "fullPath": "/deny",
-			    "movies": {
-			        "__main": {
-			            "frames": [],
-			            "info": {
-			                "fps": 60
-			            },
-			            "subdata": []
-			        }
-			    },
-			    "assetKey": "/Objects/deny.png"
-			},
-			{
 			    "assetId": 7,
 			    "x": 837,
-			    "y": 147,
+			    "y": 174,
 			    "type": 0,
 			    "anchorX": 0,
 			    "anchorY": 0,
@@ -863,7 +717,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "assetKey": "/Objects/accept.png"
 			},
 			{
-			    "x": 115,
+			    "x": 57,
 			    "y": 145,
 			    "type": 2,
 			    "anchorX": 0,
@@ -877,7 +731,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			        "fontFamily": "Arial",
 			        "fontSize": 96,
 			        "font": "bold 96px 'Arial'",
-			        "fill": "#ffffff",
+			        "fill": "#00ff00",
 			        "align": "left",
 			        "stroke": "black",
 			        "strokeThickness": 0,
@@ -912,12 +766,12 @@ window.mt = window.mt || {}; window.mt.data = {
 			            "subdata": []
 			        }
 			    },
-			    "fill": "#ffffff"
+			    "fill": "#00ff00"
 			},
 			{
-			    "assetId": 9,
-			    "x": 219,
-			    "y": 538,
+			    "assetId": 11,
+			    "x": 831,
+			    "y": 166,
 			    "type": 0,
 			    "anchorX": 0,
 			    "anchorY": 0,
@@ -935,10 +789,10 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "contents": [],
 			    "width": 128,
 			    "height": 128,
-			    "id": "tmp1417756087195",
-			    "name": "arrow_up",
+			    "id": "tmp1417747987915",
+			    "name": "deny",
 			    "index": -1,
-			    "fullPath": "/arrow_up",
+			    "fullPath": "/deny",
 			    "movies": {
 			        "__main": {
 			            "frames": [],
@@ -948,8 +802,195 @@ window.mt = window.mt || {}; window.mt.data = {
 			            "subdata": []
 			        }
 			    },
-			    "isClosed": true,
-			    "assetKey": "/Objects/arrow_up.png"
+			    "assetKey": "/Objects/deny.png"
+			},
+			{
+			    "assetId": 59,
+			    "x": 208,
+			    "y": 606,
+			    "type": 0,
+			    "anchorX": 0,
+			    "anchorY": 0,
+			    "userData": {},
+			    "physics": {
+			        "enable": 0
+			    },
+			    "scaleX": 1,
+			    "scaleY": 1,
+			    "angle": 0,
+			    "alpha": 1,
+			    "frame": 0,
+			    "isVisible": 1,
+			    "isLocked": 0,
+			    "contents": [],
+			    "width": 120,
+			    "height": 300,
+			    "id": "tmp1417885762079",
+			    "name": "arrow_up",
+			    "index": -1,
+			    "fullPath": "/arrow_up",
+			    "movies": {
+			        "__main": {
+			            "frames": [],
+			            "info": {
+			                "fps": 60
+			            },
+			            "subdata": [
+							{
+							    "id": 0.4305801270529628,
+							    "objectId": "tmp1417885762079",
+							    "name": "NewMovie",
+							    "movies": {
+							        "__main": {
+							            "frames": [],
+							            "info": {
+							                "fps": 10,
+							                "lastFrame": 11
+							            }
+							        }
+							    },
+							    "submovie": true,
+							    "fullPath": "/arrow_up/NewMovie"
+							}
+			            ]
+			        },
+			        "NewMovie": {
+			            "frames": [
+							{
+							    "x": 208,
+							    "y": 606,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 0,
+							    "easings": {}
+							},
+							{
+							    "x": 208,
+							    "y": 604,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 1
+							},
+							{
+							    "x": 208,
+							    "y": 601,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 2,
+							    "easings": {}
+							},
+							{
+							    "x": 208,
+							    "y": 599,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 3
+							},
+							{
+							    "x": 208,
+							    "y": 597,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 4
+							},
+							{
+							    "x": 208,
+							    "y": 594,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 5,
+							    "easings": {}
+							},
+							{
+							    "x": 208,
+							    "y": 591,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 6,
+							    "easings": {}
+							},
+							{
+							    "x": 207,
+							    "y": 585,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 7
+							},
+							{
+							    "x": 209,
+							    "y": 584,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 8
+							},
+							{
+							    "x": 209,
+							    "y": 581,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 9
+							},
+							{
+							    "x": 209,
+							    "y": 572,
+							    "angle": 0,
+							    "anchorX": 0,
+							    "anchorY": 0,
+							    "scaleX": 1,
+							    "scaleY": 1,
+							    "alpha": 1,
+							    "keyframe": 10
+							}
+			            ],
+			            "info": {
+			                "fps": 10,
+			                "lastFrame": 11
+			            }
+			        }
+			    },
+			    "keyframe": 0,
+			    "easings": {},
+			    "assetKey": "/Objects/wire.png"
 			},
 			{
 			    "id": "tmp1417747987912",
@@ -960,9 +1001,9 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "angle": 0,
 			    "contents": [
 					{
-					    "assetId": 42,
-					    "x": 454,
-					    "y": 382,
+					    "assetId": 57,
+					    "x": 701,
+					    "y": 330,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -970,27 +1011,27 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "physics": {
 					        "enable": 0
 					    },
-					    "scaleX": 1.3,
-					    "scaleY": 1.3,
+					    "scaleX": 0.45169082125603865,
+					    "scaleY": 0.4051863857374392,
 					    "angle": 0,
 					    "alpha": 1,
-					    "frame": 0,
+					    "frame": 1,
 					    "isVisible": 1,
 					    "isLocked": 0,
 					    "contents": [],
-					    "width": 166.4,
-					    "height": 166.4,
-					    "id": "tmp1417747987909",
-					    "name": "Box_Blue",
+					    "width": 187,
+					    "height": 250,
+					    "id": "tmp1417884308437",
+					    "name": "bulb_on_off2",
 					    "index": -1,
-					    "fullPath": "/BoxGroup/Box_Blue",
+					    "fullPath": "/BoxGroup/bulb_on_off2",
 					    "movies": {},
-					    "assetKey": "/Box_Sprite.png"
+					    "assetKey": "/bulb_on_off.png"
 					},
 					{
-					    "assetId": 42,
-					    "x": 678,
-					    "y": 381,
+					    "assetId": 57,
+					    "x": 445,
+					    "y": 329,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -998,27 +1039,27 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "physics": {
 					        "enable": 0
 					    },
-					    "scaleX": 1.3,
-					    "scaleY": 1.3,
+					    "scaleX": 0.45169082125603865,
+					    "scaleY": 0.4051863857374392,
 					    "angle": 0,
 					    "alpha": 1,
-					    "frame": 0,
+					    "frame": 1,
 					    "isVisible": 1,
 					    "isLocked": 0,
 					    "contents": [],
-					    "width": 166.4,
-					    "height": 166.4,
-					    "id": "tmp1417747987911",
-					    "name": "Box_Blue1",
+					    "width": 187,
+					    "height": 250,
+					    "id": "tmp1417884308435",
+					    "name": "bulb_on_off1",
 					    "index": -1,
-					    "fullPath": "/BoxGroup/Box_Blue1",
+					    "fullPath": "/BoxGroup/bulb_on_off1",
 					    "movies": {},
-					    "assetKey": "/Box_Sprite.png"
+					    "assetKey": "/bulb_on_off.png"
 					},
 					{
-					    "assetId": 42,
-					    "x": 201,
-					    "y": 383,
+					    "assetId": 57,
+					    "x": 179,
+					    "y": 329,
 					    "type": 0,
 					    "anchorX": 0,
 					    "anchorY": 0,
@@ -1026,23 +1067,22 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "physics": {
 					        "enable": 0
 					    },
-					    "scaleX": 1.3,
-					    "scaleY": 1.3,
+					    "scaleX": 0.45169082125603865,
+					    "scaleY": 0.4051863857374392,
 					    "angle": 0,
 					    "alpha": 1,
-					    "frame": 0,
+					    "frame": 1,
 					    "isVisible": 1,
 					    "isLocked": 0,
 					    "contents": [],
-					    "width": 166.4,
-					    "height": 166.4,
-					    "id": "tmp1417747987907",
-					    "name": "Box_Blue2",
+					    "width": 187,
+					    "height": 250,
+					    "id": "tmp1417872947708",
+					    "name": "bulb_on_off",
 					    "index": -1,
-					    "fullPath": "/BoxGroup/Box_Blue2",
+					    "fullPath": "/BoxGroup/bulb_on_off",
 					    "movies": {},
-					    "isClosed": true,
-					    "assetKey": "/Box_Sprite.png"
+					    "assetKey": "/bulb_on_off.png"
 					}
 			    ],
 			    "isVisible": 1,
@@ -1076,7 +1116,7 @@ window.mt = window.mt || {}; window.mt.data = {
 			    "angle": 0,
 			    "contents": [
 					{
-					    "assetId": 44,
+					    "assetId": 46,
 					    "x": 1,
 					    "y": -1,
 					    "type": 0,
@@ -1086,13 +1126,13 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "physics": {
 					        "enable": 0
 					    },
-					    "scaleX": 0.4,
-					    "scaleY": 0.48,
+					    "scaleX": 1.665040650406504,
+					    "scaleY": 1.8731707317073172,
 					    "angle": 0,
 					    "alpha": 1,
 					    "frame": 0,
 					    "isVisible": 1,
-					    "isLocked": false,
+					    "isLocked": true,
 					    "contents": [],
 					    "width": 1024,
 					    "height": 768,
@@ -1101,7 +1141,7 @@ window.mt = window.mt || {}; window.mt.data = {
 					    "index": -1,
 					    "fullPath": "/BlackGroup/blackboard01",
 					    "movies": {},
-					    "assetKey": "/BlackBoard/greenbgr03.jpg"
+					    "assetKey": "/BlackBoard/greenbgr04.jpg"
 					}
 			    ],
 			    "isVisible": 1,
@@ -1198,8 +1238,8 @@ window.mt = window.mt || {}; window.mt.data = {
         "count": 0
     },
     "map": {
-        "cameraX": -3,
-        "cameraY": -5,
+        "cameraX": -43,
+        "cameraY": -134,
         "worldWidth": 1024,
         "worldHeight": 768,
         "viewportWidth": 1024,
