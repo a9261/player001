@@ -20,7 +20,8 @@ var declareRand = function () { return Math.floor((Math.random() * 45) + 1); }
     }
     var TotalQ = 0;
     var CorrectQ = 0;
-
+   // Neo + lunchbox
+    var GameName = 'N¡Dunchbox'
 window.PhaserDemo.state.menu = {
 
     preload: function () {
@@ -46,6 +47,11 @@ window.PhaserDemo.state.menu = {
 	    this.game.load.onLoadStart.add(this.loadStart, this);
 	    this.game.load.onFileComplete.add(this.fileComplete, this);
 	    this.game.load.onLoadComplete.add(this.loadComplete, this);
+
+	    this.GameName = this.game.add.text((content.game.world.centerX/2 )-100, content.game.world.centerY - 200, ' N', { font: 'bold 90pt Arial', fill: '#00FF00' });
+	    this.GameName2 = this.game.add.text((content.game.world.centerX/2)-20, content.game.world.centerY - 200, '¡D', { font: 'bold 90pt Arial', fill: '#CC0000' });
+	    this.GameName3 = this.game.add.text((content.game.world.centerX /2)+50, content.game.world.centerY - 200, 'unchbox', { font: 'bold 90pt Arial', fill: '#EE7700' });
+
 	    this.button = this.game.add.button(this.game.world.centerX -150, this.game.world.centerY, 'startbtn', 
             function () {
                 this.game.load.start();
