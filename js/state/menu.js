@@ -341,7 +341,8 @@ function resetLightAnimation() {
 //Generator random Question 
 function randomQ(Question) {
 
-
+    content.AnumGroup.removeAll();
+    content.QnumGroup.removeAll();
     resetLightAnimation();
 
     var x = declareRand();
@@ -395,8 +396,7 @@ function randomQ(Question) {
     ////init AnswerList 
     //this.AnsList = ['0', '0', '0'];
     //this.BoxList = [this.Box_Blue, this.Box_Blue1, this.Box_Blue2];
-   
-    content.AnumGroup.removeAll();
+
 
     for (var i = 0; i < count; i++) {
         //console.log(content.AnsList[i].toString());
@@ -412,16 +412,10 @@ function randomQ(Question) {
         }
     }
     ////setting num on QuestionText 
-    content.QnumGroup.removeAll();
-
     var QtxtX = content.QuestionText.x;
     var QtxtY = content.QuestionText.y;
-
- 
-
     var Xsplitstr = Question.x.toString().split('');
     var Ysplitstr = Question.y.toString().split('');
-
     if (Xsplitstr.length > 1) {
         AddNum(Xsplitstr[0].toString(), QtxtX + 150, QtxtY , FonType.QNum, content.QnumGroup);
         AddNum(Xsplitstr[1].toString(), QtxtX + 230, QtxtY , FonType.QNum, content.QnumGroup);
@@ -441,22 +435,23 @@ function randomQ(Question) {
 }
 function AddNum(num, x, y, type,group) {
 
-    if (typeof group === 'undefined') { group = content.game.world; }
+    if(!isGameOver){
+        if (typeof group === 'undefined') { group = content.game.world; }
 
-    var addsprite = content.game.add.sprite(x, y, 'Num', parseInt(num, 10), group);
+        var addsprite = content.game.add.sprite(x, y, 'Num', parseInt(num, 10), group);
 
-   if (type == FonType.ANum) {
-       addsprite.scale.x= (ANum/OriginalSize);
-       addsprite.scale.y = (ANum / OriginalSize);
-   }
-   if (type == FonType.QNum) {
-       addsprite.scale.x = (QNum / OriginalSize);
-       addsprite.scale.y = (QNum / OriginalSize);
-   }
-   if (type == FonType.ScoreNum) {
-       addsprite.scale.x = (ScoreNum / OriginalSize);
-       addsprite.scale.y = (ScoreNum / OriginalSize);
-   }
-
+        if (type == FonType.ANum) {
+            addsprite.scale.x= (ANum/OriginalSize);
+            addsprite.scale.y = (ANum / OriginalSize);
+        }
+        if (type == FonType.QNum) {
+            addsprite.scale.x = (QNum / OriginalSize);
+            addsprite.scale.y = (QNum / OriginalSize);
+        }
+        if (type == FonType.ScoreNum) {
+            addsprite.scale.x = (ScoreNum / OriginalSize);
+            addsprite.scale.y = (ScoreNum / OriginalSize);
+        }
+  }
     //console.log(content.game);
 }
